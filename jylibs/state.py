@@ -1,20 +1,8 @@
+# SPDX-FileCopyrightText: 2021 Synacor, Inc.
+# SPDX-FileCopyrightText: 2021 Zextras <https://www.zextras.com>
 #
-# ***** BEGIN LICENSE BLOCK *****
-# Zimbra Collaboration Suite Server
-# Copyright (C) 2010, 2011, 2012, 2013, 2014, 2015, 2016 Synacor, Inc.
-#
-# This program is free software: you can redistribute it and/or modify it under
-# the terms of the GNU General Public License as published by the Free Software Foundation,
-# version 2 of the License.
-#
-# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-# without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details.
-# You should have received a copy of the GNU General Public License along with this program.
-# If not, see <https://www.gnu.org/licenses/>.
-# ***** END LICENSE BLOCK *****
-#
-
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-License-Identifier: GPL-2.0-only
 
 from base64 import b64decode
 import localconfig
@@ -46,7 +34,6 @@ class State:
 
 	startorder = {
 		"ldap"      : 0,
-		"dnscache"  : 10,
 		"logger"    : 20,
 		"convertd"  : 30,
 		"mailbox"   : 40,
@@ -67,8 +54,8 @@ class State:
 		}
 
 	def __init__(self):
-		self.baseDir          = "/opt/zimbra"
-		self.pidFile          = "/opt/zimbra/log/zmconfigd.pid"
+		self.baseDir          = "/opt/zextras"
+		self.pidFile          = "/opt/zextras/log/zmconfigd.pid"
 		self.hostname         = None
 		self.firstRun         = True
 		self.forced           = False

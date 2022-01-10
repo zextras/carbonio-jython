@@ -1,18 +1,7 @@
 #
-# ***** BEGIN LICENSE BLOCK *****
-# Zimbra Collaboration Suite Server
-# Copyright (C) 2010, 2012, 2013, 2014, 2015, 2016 Synacor, Inc.
+# SPDX-FileCopyrightText: 2021 Synacor, Inc.
 #
-# This program is free software: you can redistribute it and/or modify it under
-# the terms of the GNU General Public License as published by the Free Software Foundation,
-# version 2 of the License.
-#
-# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-# without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details.
-# You should have received a copy of the GNU General Public License along with this program.
-# If not, see <https://www.gnu.org/licenses/>.
-# ***** END LICENSE BLOCK *****
+# SPDX-License-Identifier: GPL-2.0-only
 #
 
 import os
@@ -25,11 +14,11 @@ import logging.handlers
 import re
 import threading
 
-from org.productivity.java.syslog4j import Syslog
-from org.productivity.java.syslog4j import SyslogIF
-from org.productivity.java.syslog4j import SyslogConstants
-from org.productivity.java.syslog4j.impl.unix import UnixSyslog
-from org.productivity.java.syslog4j.impl.unix.socket import UnixSocketSyslogConfig
+from org.graylog2.syslog4j import Syslog
+from org.graylog2.syslog4j import SyslogIF
+from org.graylog2.syslog4j import SyslogConstants
+from org.graylog2.syslog4j.impl.unix import UnixSyslog
+from org.graylog2.syslog4j.impl.unix.socket import UnixSocketSyslogConfig
 
 class Log:
 	zmconfigdSyslogInstance = UnixSocketSyslogConfig(SyslogConstants.FACILITY_LOCAL0, "/dev/log")

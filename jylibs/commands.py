@@ -1,20 +1,8 @@
+# SPDX-FileCopyrightText: 2021 Synacor, Inc.
+# SPDX-FileCopyrightText: 2021 Zextras <https://www.zextras.com>
 #
-# ***** BEGIN LICENSE BLOCK *****
-# Zimbra Collaboration Suite Server
-# Copyright (C) 2010, 2011, 2012, 2013, 2014, 2015, 2016 Synacor, Inc.
-#
-# This program is free software: you can redistribute it and/or modify it under
-# the terms of the GNU General Public License as published by the Free Software Foundation,
-# version 2 of the License.
-#
-# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-# without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details.
-# You should have received a copy of the GNU General Public License along with this program.
-# If not, see <https://www.gnu.org/licenses/>.
-# ***** END LICENSE BLOCK *****
-#
-
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-License-Identifier: GPL-2.0-only
 
 from logmsg import *
 from org.apache.log4j import PropertyConfigurator
@@ -49,20 +37,16 @@ exe = {
 	'ZIMBRAADMIN'   : "bin/zmmailboxdctl",
 	'SERVICE'       : "bin/zmmailboxdctl",
 	'ZIMLET'        : "bin/zmmailboxdctl",
-	'SPELL'         : "bin/zmspellctl",
 	'LDAP'          : "bin/ldap",
-	'SNMP'          : "bin/zmswatchctl",
 	'LOGGER'        : "bin/zmloggerctl",
 	'MAILBOX'       : "bin/zmstorectl",
 	'CBPOLICYD'     : "bin/zmcbpolicydctl",
 	'PROXYGEN'      : "libexec/zmproxyconfgen",
-	'CONVERTD'      : "bin/zmconvertctl",
 	'OPENDKIM'	: "bin/zmopendkimctl",
-	'DNSCACHE'	: "bin/zmdnscachectl",
 	}
 
 class Command:
-	PropertyConfigurator.configure("/opt/zimbra/conf/zmconfigd.log4j.properties");
+	PropertyConfigurator.configure("/opt/zextras/conf/zmconfigd.log4j.properties");
 	P = Provisioning.getInstance(Provisioning.CacheMode.OFF)
 
 	@classmethod
@@ -75,7 +59,7 @@ class Command:
 			except:
 				pass  # mailboxd is down, or not running here, either way we don't care.
 
-	def __init__(self, desc, name, cmd=None, func=None, args=None, base="/opt/zimbra"):
+	def __init__(self, desc, name, cmd=None, func=None, args=None, base="/opt/zextras"):
 		self.desc = desc
 		self.name = name
 		self.cmd = None
@@ -411,11 +395,6 @@ commands = {
 		name = "opendkim",
 		cmd  = exe["OPENDKIM"] + " %s",
 	),
-	"dnscache" : Command(
-		desc = "dnscache",
-		name = "dnscache",
-		cmd  = exe["DNSCACHE"] + " %s",
-	),
 	"cbpolicyd" : Command(
 		desc = "cbpolicyd",
 		name = "cbpolicyd",
@@ -451,20 +430,10 @@ commands = {
 		name = "zimlet",
 		cmd  = exe["ZIMLET"] + " %s",
 	),
-	"spell" : Command(
-		desc = "spell",
-		name = "spell",
-		cmd  = exe["SPELL"] + " %s",
-	),
 	"ldap" : Command(
 		desc = "ldap",
 		name = "ldap",
 		cmd  = exe["LDAP"] + " %s",
-	),
-	"snmp" : Command(
-		desc = "snmp",
-		name = "snmp",
-		cmd  = exe["SNMP"] + " %s",
 	),
 	"logger" : Command(
 		desc = "logger",
@@ -475,11 +444,6 @@ commands = {
 		desc = "mailbox",
 		name = "mailbox",
 		cmd  = exe["MAILBOX"] + " %s",
-	),
-	"convertd" : Command(
-		desc = "convertd",
-		name = "convertd",
-		cmd  = exe["CONVERTD"] + " %s",
 	),
 	}
 
