@@ -16,7 +16,7 @@ from com.zimbra.cs.account.ldap import LdapProvisioning
 from com.zimbra.common.localconfig import LC
 from com.zimbra.cs.extension import ExtensionDispatcherServlet
 from com.zimbra.cs.httpclient import URLUtil
-from com.zimbra.cs.util import ProxyConfGen
+from com.zimbra.cs.util.proxyconfgen import ProxyConfGen
 
 exe = {
 	"POSTCONF"      : "bin/postconf -e",
