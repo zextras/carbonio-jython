@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: GPL-2.0-only
 
 from logmsg import *
-from org.apache.logging.log4j.core.conf import Configurator
+from org.apache.logging.log4j.core.config import Configurator
 import shlex
 import subprocess
 import time
