@@ -33,12 +33,8 @@ exe = {
 	'ANTIVIRUS'     : "bin/zmclamdctl",
 	'SASL'          : "bin/zmsaslauthdctl",
 	'MAILBOXD'      : "bin/zmmailboxdctl",
-	'ZIMBRA'        : "bin/zmmailboxdctl",
-	'ZIMBRAADMIN'   : "bin/zmmailboxdctl",
 	'SERVICE'       : "bin/zmmailboxdctl",
-	'ZIMLET'        : "bin/zmmailboxdctl",
 	'LDAP'          : "bin/ldap",
-	'LOGGER'        : "bin/zmloggerctl",
 	'MAILBOX'       : "bin/zmstorectl",
 	'CBPOLICYD'     : "bin/zmcbpolicydctl",
 	'PROXYGEN'      : "libexec/zmproxyconfgen",
@@ -410,35 +406,15 @@ commands = {
 		name = "mailboxd",
 		cmd  = exe["MAILBOXD"] + " %s",
 	),
-	"zimbra" : Command(
-		desc = "zimbra",
-		name = "zimbra",
-		cmd  = exe["ZIMBRA"] + " %s",
-		),
-	"zimbraadmin" : Command(
-		desc = "zimbraadmin",
-		name = "zimbraadmin",
-		cmd  = exe["ZIMBRAADMIN"] + " %s",
-	),
 	"service" : Command(
 		desc = "service",
 		name = "service",
 		cmd  = exe["SERVICE"] + " %s",
 	),
-	"zimlet" : Command(
-		desc = "zimlet",
-		name = "zimlet",
-		cmd  = exe["ZIMLET"] + " %s",
-	),
 	"ldap" : Command(
 		desc = "ldap",
 		name = "ldap",
 		cmd  = exe["LDAP"] + " %s",
-	),
-	"logger" : Command(
-		desc = "logger",
-		name = "logger",
-		cmd  = exe["LOGGER"] + " %s",
 	),
 	"mailbox" : Command(
 		desc = "mailbox",
