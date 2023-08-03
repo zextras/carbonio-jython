@@ -5,6 +5,7 @@ After=network-online.target
 
 [Service]
 Type=simple
+Enviroment="JYTHONPATH=/opt/zextras/common/lib/jylibs"
 ExecStart=/opt/zextras/common/bin/java \
     -cp /opt/zextras/lib/jars/*:/opt/zextras/jetty_base/common/lib/*:/opt/zextras/jetty_base/webapps/service/WEB-INF/lib/*:/opt/zextras/lib/jars/jython-standalone.jar \
     org.python.util.jython \
