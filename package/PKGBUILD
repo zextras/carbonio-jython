@@ -19,7 +19,7 @@ depends=(
 )
 
 package() {
-  cd "${srcdir}"/../../
+  cd "${srcdir}"/../
     install -D configd/lib/jylibs/commands.py \
       "${pkgdir}/opt/zextras/common/lib/jylibs/commands.py"
     install -D configd/lib/jylibs/conf.py \
@@ -44,3 +44,7 @@ package() {
       "${pkgdir}/opt/zextras/common/lib/jylibs/serverconfig.py"
     install -D configd/lib/jylibs/state.py \
       "${pkgdir}/opt/zextras/common/lib/jylibs/state.py"
+
+    install -D target/dependencies/jython-standalone-2.5.2.jar \
+       "${pkgdir}/opt/zextras/common/lib/jylibs/jython-standalone-2.5.2.jar"
+}

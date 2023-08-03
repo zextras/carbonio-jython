@@ -7,9 +7,53 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <groupId>com.zextras</groupId>
   <artifactId>carbonio-configd</artifactId>
   <version>1</version>
+  <packaging>pom</packaging>
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
   </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.python</groupId>
+      <artifactId>jython-standalone</artifactId>
+      <version>2.5.2</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/dependencies</outputDirectory>
+              <overWriteReleases>false</overWriteReleases>
+              <overWriteSnapshots>false</overWriteSnapshots>
+              <overWriteIfNewer>true</overWriteIfNewer>
+              <excludeTransitive>true</excludeTransitive>
+            </configuration>
+          </execution>
+          <execution>
+            <id>analyze</id>
+            <phase>package</phase>
+            <goals>
+              <goal>analyze-dep-mgt</goal>
+            </goals>
+            <configuration>
+              <failBuild>true</failBuild>
+              <ignoreDirect>false</ignoreDirect>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
