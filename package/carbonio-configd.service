@@ -1,0 +1,22 @@
+[Unit]
+Description=Carbonio Configd
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/opt/zextras/common/bin/java \
+    -cp /opt/zextras/lib/jars/*:/opt/zextras/jetty_base/common/lib/*:/opt/zextras/jetty_base/webapps/service/WEB-INF/lib/*:/opt/zextras/lib/jars/jython-standalone.jar \
+    org.python.util.jython \
+    /opt/zextras/libexec/zmconfigd
+Restart=on-failure
+RestartSec=15
+User=carbonio-configd
+KillMode=process
+KillSignal=SIGKILL
+LimitNOFILE=65536
+TimeoutSec=120
+TimeoutStopSec=120
+
+[Install]
+WantedBy=multi-user.target

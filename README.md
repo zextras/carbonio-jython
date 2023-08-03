@@ -7,6 +7,14 @@
 "Project")
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/zextras.svg?style=social&label=Follow%20%40zextras)](https://twitter.com/zextras)
 
+## Description
+
+This repo contains carbonio-configd daemon source code.
+Carbonio-configd is a service to manage and **rewrite configuration files used 
+by other services**. \
+The service picks values from the LocalConfig and expands configuration 
+files by filling the variables.
+
 ## License
 
 See [COPYING](COPYING) file for details

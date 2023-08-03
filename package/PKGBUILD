@@ -1,0 +1,46 @@
+targets=(
+  "centos"
+  "ubuntu"
+)
+pkgname="carbonio-configd"
+pkgver="4.0.25"
+pkgrel="1"
+pkgdesc="Config-rewrite service for Carbonio"
+pkgdesclong=(
+  "This package provides a daemon service that updates configuration files with Carbonio defined variables"
+)
+maintainer="Zextras <packages@zextras.com>"
+url="https://zextras.com"
+section="mail"
+priority="optional"
+arch="amd64"
+depends=(
+  "carbonio-core"
+)
+
+package() {
+  cd "${srcdir}"/../../
+    install -D configd/lib/jylibs/commands.py \
+      "${pkgdir}/opt/zextras/common/lib/jylibs/commands.py"
+    install -D configd/lib/jylibs/conf.py \
+      "${pkgdir}/opt/zextras/common/lib/jylibs/conf.py"
+    install -D configd/lib/jylibs/config.py \
+      "${pkgdir}/opt/zextras/common/lib/jylibs/config.py"
+    install -D configd/lib/jylibs/globalconfig.py \
+      "${pkgdir}/opt/zextras/common/lib/jylibs/globalconfig.py"
+    install -D configd/lib/jylibs/ldap.py \
+      "${pkgdir}/opt/zextras/common/lib/jylibs/ldap.py"
+    install -D configd/lib/jylibs/listener.py \
+      "${pkgdir}/opt/zextras/common/lib/jylibs/listener.py"
+    install -D configd/lib/jylibs/localconfig.py \
+      "${pkgdir}/opt/zextras/common/lib/jylibs/localconfig.py"
+    install -D configd/lib/jylibs/logmsg.py \
+      "${pkgdir}/opt/zextras/common/lib/jylibs/logmsg.py"
+    install -D configd/lib/jylibs/miscconfig.py \
+      "${pkgdir}/opt/zextras/common/lib/jylibs/miscconfig.py"
+    install -D configd/lib/jylibs/mtaconfig.py \
+      "${pkgdir}/opt/zextras/common/lib/jylibs/mtaconfig.py"
+    install -D configd/lib/jylibs/serverconfig.py \
+      "${pkgdir}/opt/zextras/common/lib/jylibs/serverconfig.py"
+    install -D configd/lib/jylibs/state.py \
+      "${pkgdir}/opt/zextras/common/lib/jylibs/state.py"
