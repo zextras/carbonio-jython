@@ -50,7 +50,7 @@ pipeline {
                             steps {
                                 unstash 'staging'
                                 sh 'cp -r staging /tmp'
-                                sh 'sudo pacur build ubuntu-focal /tmp/staging/packages'
+                                sh 'sudo pacur build ubuntu-focal /tmp/staging/package'
                                 stash includes: 'artifacts/', name: 'artifacts-ubuntu-focal'
                             }
                             post {
@@ -68,7 +68,7 @@ pipeline {
                             steps {
                                 unstash 'staging'
                                 sh 'cp -r staging /tmp'
-                                sh 'sudo pacur build rocky-8 /tmp/staging/packages'
+                                sh 'sudo pacur build rocky-8 /tmp/staging/package'
                                 stash includes: 'artifacts/', name: 'artifacts-rocky-8'
                             }
                             post {
