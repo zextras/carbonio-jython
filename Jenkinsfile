@@ -33,6 +33,52 @@ pipeline {
         stage('Build') {
             steps {
                 mvnCmd("clean package")
+                sh 'cp -r configd package staging'
+                stash includes: 'staging/**', name: 'staging'
+            }
+        }
+        stage('Build deb/rpm') {
+            stages {
+                stage('pacur') {
+                    parallel {
+                        stage('Ubuntu 20.04') {
+                            agent {
+                                node {
+                                    label 'pacur-agent-ubuntu-20.04-v1'
+                                }
+                            }
+                            steps {
+                                unstash 'staging'
+                                sh 'cp -r staging /tmp'
+                                sh 'sudo pacur build ubuntu-focal /tmp/staging/packages'
+                                stash includes: 'artifacts/', name: 'artifacts-ubuntu-focal'
+                            }
+                            post {
+                                always {
+                                    archiveArtifacts artifacts: 'artifacts/*.deb', fingerprint: true
+                                }
+                            }
+                        }
+                        stage('Rocky 8') {
+                            agent {
+                                node {
+                                    label 'pacur-agent-rocky-8-v1'
+                                }
+                            }
+                            steps {
+                                unstash 'staging'
+                                sh 'cp -r staging /tmp'
+                                sh 'sudo pacur build rocky-8 /tmp/staging/packages'
+                                stash includes: 'artifacts/', name: 'artifacts-rocky-8'
+                            }
+                            post {
+                                always {
+                                    archiveArtifacts artifacts: 'artifacts/*.rpm', fingerprint: true
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
