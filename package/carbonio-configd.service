@@ -12,7 +12,7 @@ ExecStart=/opt/zextras/common/bin/java \
     :/opt/zextras/common/lib/jylibs\
     :/opt/zextras/lib/jars/jython-standalone.jar \
     org.python.util.jython \
-    /opt/zextras/libexec/zmconfigd
+    /opt/zextras/common/lib/jylibs/zmconfigd
 Restart=on-failure
 RestartSec=15
 User=carbonio-configd

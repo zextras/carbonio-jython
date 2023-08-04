@@ -45,6 +45,9 @@ package() {
     install -D configd/lib/jylibs/state.py \
       "${pkgdir}/opt/zextras/common/lib/jylibs/state.py"
 
+    install -D configd/lib/jylibs/zmconfigd \
+          "${pkgdir}/opt/zextras/common/lib/jylibs/zmconfigd"
+
     install -Dm 644 configd/carbonio-configd.service \
       "${pkgdir}/lib/systemd/system/carbonio-configd.service"
 
