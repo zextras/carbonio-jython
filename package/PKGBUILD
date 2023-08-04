@@ -45,6 +45,9 @@ package() {
     install -D configd/lib/jylibs/state.py \
       "${pkgdir}/opt/zextras/common/lib/jylibs/state.py"
 
+    install -Dm 644 configd/carbonio-configd.service \
+      "${pkgdir}/lib/systemd/system/carbonio-configd.service"
+
     install -D target/dependencies/jython-standalone-2.5.2.jar \
        "${pkgdir}/opt/zextras/common/lib/jylibs/jython-standalone-2.5.2.jar"
 }
