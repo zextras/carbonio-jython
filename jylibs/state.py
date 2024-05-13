@@ -50,7 +50,6 @@ class State:
 
 	def __init__(self):
 		self.baseDir          = "/opt/zextras"
-		self.pidFile          = "/opt/zextras/log/zmconfigd.pid"
 		self.hostname         = None
 		self.firstRun         = True
 		self.forced           = False
@@ -432,38 +431,6 @@ class State:
 			rvalue = not rvalue
 		Log.logMsg(5, "Checking conditional for negate=%s type=%s %s=%s return=%s" % (negate, type, key, value, rvalue))
 		return rvalue
-
-	def isrunning(self):
-		cpid = self.getpid()
-		if cpid:
-			# python throws if pid does't exist, jython returns -1
-			try:
-				if (os.kill(cpid,0) != -1):
-					Log.logMsg(1, "zmconfigd already running at %d" % (cpid,)) 
-					return True
-			except:
-				return False
-		return False
-
-	def getpid(self):
-		pf = self.pidFile
-		try:
-			cpid = open(pf).readline().strip()
-		except Exception, e:
-			return 0
-		return int(cpid)
-
-	def writepid(self):
-		try:
-			pid = str(os.getpid())
-			Log.logMsg(4, "Writing %s to %s" % (pid, self.pidFile))
-			f = open(self.pidFile, 'w+')
-			f.write("%s\n" % (pid,))
-		except Exception, e:
-			[Log.logMsg(1,t) for t in traceback.format_tb(sys.exc_info()[2])]
-			Log.logMsg (0, "writepid() failed: %s" % (e,))
-		finally:
-			f.close()
 
 	def resetChangedKeys(self, section):
 		self.changedkeys[section] = []
