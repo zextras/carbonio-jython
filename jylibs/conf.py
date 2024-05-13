@@ -27,7 +27,6 @@ class Config:
 						}
 		self.configFile = self.baseDir+"/conf/zmconfigd.cf";
 		self.logFile    = self.baseDir+"/log/"+self.progname+".log";
-		self.pidFile    = self.baseDir+"/log/"+self.progname+".pid";
 		self.interval 	= 60
 		if self.debug:
 			self.interval  = 10
