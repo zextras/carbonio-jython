@@ -277,7 +277,7 @@ def getlocal(sArgs=None, rArgs=None):
 
 def proxygen(sArgs=None, rArgs=None):
 	Log.logMsg(5, "proxygen: sArgs='%s', rArgs='%s'" % (sArgs, rArgs))
-	rc = ProxyConfGen.createConf(["-s",rArgs[0]])
+	rc = ProxyConfGen.run(["-s",rArgs[0]])
 	return (rc, "", "")
 
 commands = {
