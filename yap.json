@@ -1,0 +1,11 @@
+{
+  "name": "Config service",
+  "description": "Config service for legacy apps",
+  "buildDir": "/tmp",
+  "output": "artifacts",
+  "projects": [
+    {
+      "name": "package"
+    }
+  ]
+}

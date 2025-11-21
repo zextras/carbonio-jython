@@ -1,0 +1,26 @@
+pkgname="carbonio-configd"
+pkgver="1.0.0"
+pkgrel="1"
+pkgdesc="Config service for legacy applications"
+arch=('x86_64')
+maintainer="Zextras <packages@zextras.com>"
+copyright=(
+  "2022-2024, Zextras <https://www.zextras.com>"
+  "2022, Synacor, Inc."
+)
+license=(
+  "GPL-2.0-only"
+)
+url="https://github.com/zextras"
+section="mail"
+priority="optional"
+
+package() {
+
+  cd "$(dirname "$(find / -name "yap.json" -print -quit)")"
+
+  install -Ddm755 "${pkgdir}/opt/zextras/lib/jars/configd"
+
+  install -D target/dependencies/*.jar \
+    "${pkgdir}/opt/zextras/lib/jars/configd"
+}
