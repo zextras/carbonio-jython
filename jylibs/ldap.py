@@ -9,17 +9,10 @@ import conf
 from com.zimbra.cs.ldap.LdapServerConfig import GenericLdapConfig
 from com.zimbra.cs.ldap import LdapClient
 from com.zimbra.cs.ldap import LdapUsage
-from com.zimbra.cs.ldap import ZAttributes
-from com.zimbra.cs.ldap import ZLdapContext
-from com.zimbra.cs.ldap import ZLdapFilter
 from com.zimbra.cs.ldap import ZLdapFilterFactory
 from com.zimbra.cs.ldap.ZLdapFilterFactory import FilterId
 from com.zimbra.cs.ldap import ZSearchControls
-from com.zimbra.cs.ldap import ZSearchResultEntry;
-from com.zimbra.cs.ldap import ZMutableEntry
-from com.zimbra.cs.ldap import ZSearchResultEnumeration
 from com.zimbra.cs.ldap import ZSearchScope
-from com.zimbra.cs.ldap.LdapException import LdapSizeLimitExceededException
 from logmsg import *
 
 # (Key, DN, requires_master)
@@ -60,7 +53,7 @@ class Ldap:
 			bindDN = "cn=config"
 			try:
 				cls.mLdapConfig =  GenericLdapConfig(ldapUrl, cls.cf.ldap_starttls_required, bindDN, cls.cf.ldap_root_password)
-			except Exception, e:
+			except Exception as e:
 				Log.logMsg(1, "LDAP CONFIG FAILURE (%s)" % e)
 
 		else:

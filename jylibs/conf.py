@@ -41,7 +41,7 @@ class Config:
 	def __getitem__(self, key):
 		try:
 			return self.config[key]
-		except Exception, e:
+		except Exception as e:
 			return None
 
 	def setVals(self, state):

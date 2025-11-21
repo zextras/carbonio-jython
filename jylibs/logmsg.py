@@ -5,20 +5,14 @@
 #
 
 import os
-import conf
-import sys
-import logging
-import time
-import logging
-import logging.handlers
 import re
-import threading
 
 from org.graylog2.syslog4j import Syslog
-from org.graylog2.syslog4j import SyslogIF
 from org.graylog2.syslog4j import SyslogConstants
-from org.graylog2.syslog4j.impl.unix import UnixSyslog
 from org.graylog2.syslog4j.impl.unix.socket import UnixSocketSyslogConfig
+
+import conf
+
 
 class Log:
 	zmconfigdSyslogInstance = UnixSocketSyslogConfig(SyslogConstants.FACILITY_LOCAL0, "/dev/log")

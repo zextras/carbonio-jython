@@ -5,18 +5,15 @@
 #
 
 
-import os
 import signal
 import socket
-import SocketServer
-import threading
-import time
+import socketserver
 
 import state
-
 from logmsg import *
 
-class ThreadedRequestHandler(SocketServer.BaseRequestHandler):
+
+class ThreadedRequestHandler(socketserver.BaseRequestHandler):
 
 	def handle(self):
 
@@ -49,14 +46,14 @@ class ThreadedRequestHandler(SocketServer.BaseRequestHandler):
 		Log.logMsg(5, "Sending %s" % response)
 		self.request.send(response)
 
-class ThreadedStreamServer(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
+class ThreadedStreamServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
 
 	allow_reuse_address = True
 
 	def shutdown(self):
 		Log.logMsg(5, "Removing socket %s" % self.server_address)
 
-class ThreadedStreamServerIPv6(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
+class ThreadedStreamServerIPv6(socketserver.ThreadingMixIn, socketserver.TCPServer):
 
 	allow_reuse_address = True
 	address_family = socket.AF_INET6
