@@ -15,7 +15,14 @@ from com.zimbra.cs.account.ldap import LdapProvisioning
 from com.zimbra.common.localconfig import LC
 from com.zimbra.cs.extension import ExtensionDispatcherServlet
 from com.zimbra.cs.httpclient import URLUtil
-from com.zimbra.cs.util.proxyconfgen import ProxyConfGen
+
+# Try to import ProxyConfGen, but it's only available on nodes with carbonio-proxy installed
+try:
+	from com.zimbra.cs.util.proxyconfgen import ProxyConfGen
+	PROXYCONFGEN_AVAILABLE = True
+except ImportError:
+	ProxyConfGen = None
+	PROXYCONFGEN_AVAILABLE = False
 
 exe = {
 	"POSTCONF"      : "bin/postconf -e",
@@ -63,7 +70,7 @@ class Command:
 		self.func = func
 		self.args = args
 		self.resetState()
-	
+
 	def __str__(self):
 		if self.cmd:
 			return "%s %s %s %s" % (self.name, self.cmd, self.status, self.error)
@@ -277,6 +284,8 @@ def getlocal(sArgs=None, rArgs=None):
 
 def proxygen(sArgs=None, rArgs=None):
 	Log.logMsg(5, "proxygen: sArgs='%s', rArgs='%s'" % (sArgs, rArgs))
+	if not PROXYCONFGEN_AVAILABLE:
+		return (0, "", "")
 	rc = ProxyConfGen.run(["-s",rArgs[0]])
 	return (rc, "", "")
 
